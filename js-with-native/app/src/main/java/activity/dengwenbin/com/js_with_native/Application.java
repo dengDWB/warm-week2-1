@@ -2,6 +2,8 @@ package activity.dengwenbin.com.js_with_native;
 
 import android.util.Log;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import listener.ScreenListener;
 
 /**
@@ -13,7 +15,7 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        LeakCanary.install(this);
         ScreenListener l = new ScreenListener(this);
         l.begin(new ScreenListener.ScreenStateListener() {
 
