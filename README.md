@@ -36,6 +36,10 @@
 
 ![](http://i.imgur.com/ykbYL0A.png)
 
+**另一个方法的实现是截图**
+
+![](http://i.imgur.com/qcmBjQG.png)
+
 ## 系统通知 ##
 
 1.

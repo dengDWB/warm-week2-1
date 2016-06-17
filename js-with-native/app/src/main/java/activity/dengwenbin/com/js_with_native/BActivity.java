@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -19,14 +24,16 @@ import okhttp3.Response;
 public class BActivity extends AppCompatActivity{
 
     private WebView webView;
-    private String str;
+    private String str="";
     private OkHttpClient client;
+    private String s="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b);
         webView = (WebView) findViewById(R.id.bwebview);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webView.addJavascriptInterface(new JsInterfaceB(), "JsInterfaceB");
         webView.setWebChromeClient(new WebChromeClient() {
         });
@@ -40,8 +47,9 @@ public class BActivity extends AppCompatActivity{
             startActivity(intent);
             finish();
         }
+
         @JavascriptInterface
-        public String callApi(){
+        public void callApi(){
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -53,17 +61,29 @@ public class BActivity extends AppCompatActivity{
                 }
             }).start();
             System.out.println(str);
-            return str;
+            if(s.equals("")){
+                webView.loadUrl("javascript:addApi("+"'加载中'"+")");
+                System.out.println("javascript:addApi("+"'加载中'"+")");
+            }else{
+                webView.loadUrl("javascript:addApi(\'" + s + "\')");
+                System.out.println("javascript:addApi(\'" + s + "\')");
+            }
         }
     }
 
     public void getAPI() throws IOException {
         client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.github.com/repos/square/okhttp/issues")
+                .url("https://api.github.com/repos/square/okhttp/issues/2635")
                 .addHeader("Accept", "application/json; q=0.5")
                 .build();
         Response response = client.newCall(request).execute();
         str = response.body().string();
+        System.out.println(str);
+        String str1 ="'";
+        Pattern pattern = Pattern.compile(str1);
+        Matcher matcher = pattern.matcher(str);
+        s= matcher.replaceAll("l");
+
     }
 }
