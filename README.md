@@ -56,3 +56,18 @@
 
 4.
 ![](http://i.imgur.com/sY4GRbQ.png)
+
+## gradlew操作 ##
+
+1.
+
+![](http://i.imgur.com/2isOAQe.png)
+2.
+
+![](http://i.imgur.com/wfgKX0F.png)
+3.
+
+![](http://i.imgur.com/pQCpW84.png)
+4.
+
+![](http://i.imgur.com/mZjwStj.png)
