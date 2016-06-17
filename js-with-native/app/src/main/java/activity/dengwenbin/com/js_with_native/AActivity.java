@@ -33,6 +33,7 @@ public class AActivity extends AppCompatActivity {
         @JavascriptInterface
         public void toBActivity(){
             Intent intent = new Intent(AActivity.this,BActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         }
@@ -41,7 +42,7 @@ public class AActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        System.out.println("activity销毁");
+        System.out.println("AActivity销毁");
     }
 
     @Override

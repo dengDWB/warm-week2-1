@@ -44,6 +44,7 @@ public class BActivity extends AppCompatActivity{
         @JavascriptInterface
         public void toAActivity(){
             Intent intent = new Intent(BActivity.this,AActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         }
@@ -85,5 +86,11 @@ public class BActivity extends AppCompatActivity{
         Matcher matcher = pattern.matcher(str);
         s= matcher.replaceAll("l");
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("BAcvitity销毁");
     }
 }
