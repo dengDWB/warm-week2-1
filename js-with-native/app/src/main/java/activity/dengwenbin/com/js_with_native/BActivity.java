@@ -56,19 +56,24 @@ public class BActivity extends AppCompatActivity{
                 public void run() {
                     try {
                         getAPI();
+                        System.out.println(str);
+                        if(s.equals("")){
+                            webView.loadUrl("javascript:addApi("+"'加载中'"+")");
+                            System.out.println("javascript:addApi("+"'加载中'"+")");
+                            Thread.sleep(1000);
+                        }else if(!s.equals("")){
+                            webView.loadUrl("javascript:addApi(\'" + s + "\')");
+                            System.out.println("javascript:addApi(\'" + s + "\')");
+                        }
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             }).start();
             System.out.println(str);
-            if(s.equals("")){
-                webView.loadUrl("javascript:addApi("+"'加载中'"+")");
-                System.out.println("javascript:addApi("+"'加载中'"+")");
-            }else{
-                webView.loadUrl("javascript:addApi(\'" + s + "\')");
-                System.out.println("javascript:addApi(\'" + s + "\')");
-            }
+
         }
     }
 
