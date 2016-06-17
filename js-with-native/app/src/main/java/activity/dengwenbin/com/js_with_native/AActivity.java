@@ -4,9 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
+import help.Tool;
+import listener.ScreenListener;
 
 public class AActivity extends AppCompatActivity {
 
@@ -38,5 +42,21 @@ public class AActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         System.out.println("activity销毁");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(!Tool.isBackstage(this)){
+            Log.i("State","切换前台");
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(!Tool.isBackstage(this)){
+            Log.i("State","切换后台");
+        }
     }
 }

@@ -35,3 +35,24 @@
 5.在B界面中点击API呼叫按钮
 
 ![](http://i.imgur.com/ykbYL0A.png)
+
+## 系统通知 ##
+
+1.
+ 
+![](http://i.imgur.com/kkjxxDT.png)
+
+
+2.
+ 
+![](http://i.imgur.com/1CS7Ztf.png)
+
+
+3.
+ 
+![](http://i.imgur.com/4YAwjfw.png)
+
+
+
+4.
+![](http://i.imgur.com/sY4GRbQ.png)
