@@ -1,0 +1,27 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+	<script type="text/javascript">
+		function toBActivity(){
+			window.JsInterfaceB.toAActivity();
+		}
+		
+		function callApi(){
+			var str = window.JsInterfaceB.callApi();
+			document.getElementById("MSG").value = str;
+		}
+	</script>
+	<style type="text/css">
+	
+	</style>
+</head>
+	<body align="center">
+		<textarea name="MSG" id = "MSG"cols=40 rows=4 onpropertychange= "this.style.posHeight=this.scrollHeight "></textarea></br>
+		<input type="button" onclick="toBActivity();" value="A">
+		<input type="button" onclick="callApi();" value="API呼叫">
+
+	</body>
+
+</html>
